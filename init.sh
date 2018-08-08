@@ -90,4 +90,6 @@ kvs["NODE_IP"]=$DIR
 kvs["NODE_NAME"]=${kvs["MASTER_2_HOSTNAME"]}
 replace_files $DIR
 
+replace_files services
+
 echo "配置生成成功，位置: `pwd`"
