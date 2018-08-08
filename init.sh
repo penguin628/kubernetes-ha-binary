@@ -55,15 +55,12 @@ replace_files addons
 BACKUP_IFS=$IFS
 IFS=','
 worker_ips=(${kvs["WORKER_IPS"]})
-worker_hostnames=(${kvs["WORKER_HOSTNAMES"]})
 IFS=$BACKUP_IFS
 for i in ${!worker_ips[@]}
 do
     ip=${worker_ips[$i]}
-    nodename=${worker_hostnames[$i]}
     mkdir "worker-$ip"
     kvs["NODE_IP"]=$ip
-    kvs["NODE_NAME"]=$nodename
     cp configs/kubelet.config.json "worker-$ip"
     cp services/kubelet.service "worker-$ip"
     cp configs/kube-proxy.config.yaml "worker-$ip"
